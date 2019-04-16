@@ -1,19 +1,3 @@
-const STATUS = {
-    PASSED: "passed",
-    COMPLETED: "completed",
-    FAILED: "failed",
-    INCOMPLETE: "incomplete",
-    BROWSED: "browsed",
-    NOT_ATTEMPTED: "not attempted"
-};
-
-const SCORM_API = {
-    SUSPEND_DATA: "cmi.suspend_data",
-    LESSON_STATUS: "cmi.core.lesson_status",
-    LESSON_LOCATION: "cmi.core.lesson_location",
-    SCORE: "cmi.core.score.raw"
-};
-
 class ScormAPIService {
     constructor() {
         this.name = 'scorm';
@@ -43,12 +27,15 @@ class ScormAPIService {
         this.scorm.save();
         return response;
     }
+
     getObject(key) {
         return JSON.parse(this.get(key) || "{}");
     }
+
     setObject(key, value) {
         return this.set(key, JSON.stringify(value));
     }
+    
     save() {
         return this.scorm.save();
     }

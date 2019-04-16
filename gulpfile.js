@@ -3,6 +3,7 @@ const babel = require("gulp-babel");
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const sourcemaps = require("gulp-sourcemaps");
+
 const babelconfig = {
     "presets": [
         "@babel/env"
@@ -12,6 +13,12 @@ const babelconfig = {
     ]
 };
 
+function build_no_babel() {
+    return gulp
+        .src(['./src/**/*.js'])
+        .pipe(concat('scorm-localstorage-service.js'))
+        .pipe(gulp.dest('./dist'));
+}
 
 function build() {
     return gulp
@@ -28,9 +35,7 @@ function watchFiles() {
     return Promise.all([gulp.watch('./src/**/*.js', build)]);
 }
 
-
-
-const defaults = gulp.series(build, watchFiles);
+const defaults = gulp.series(build_no_babel, build, watchFiles);
 
 gulp.task("default", defaults);
-gulp.task("build", build);
+gulp.task("build", gulp.series(build_no_babel, build));

@@ -22,9 +22,9 @@
     }
 
     function startApp() {
-        api = new PersistanceService(new ScormAPIService(), new LocstorService());
+        api = PersistanceService.Create();
         api.init();
-        
+
         buttonWasClicked = api.loadObject('clicked') || false;
         print();
 

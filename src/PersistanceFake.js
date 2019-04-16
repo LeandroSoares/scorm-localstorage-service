@@ -1,6 +1,3 @@
-// variaveis reservadas que usamos no suspend_data
-const QUIZES = "quizes";
-
 class PersistanceFake {
     constructor() {
         this.name = "PersistanceFake";
@@ -24,7 +21,7 @@ class PersistanceFake {
     save() {
         return true;
     }
-    
+
     quit() {
         console.log("PersistanceFake >> quit");
         return true;

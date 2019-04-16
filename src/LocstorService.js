@@ -1,7 +1,7 @@
-const SUSPEND_DATA = "suspend_data";
-
 class LocstorService {
-    constructor() {this.name = 'localStorage'; }
+    constructor() {
+        this.name = 'localStorage';
+    }
 
     init() {
         return true;
@@ -26,5 +26,7 @@ class LocstorService {
         console.log('trying to save...');
         return true;
     }
-    quit() { }
+    quit() {
+        console.log('trying to quit...');
+    }
 }

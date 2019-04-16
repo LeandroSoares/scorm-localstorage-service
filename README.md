@@ -3,6 +3,25 @@
 A biblioteca disponibiliza um encapsulamento da biblioteca pipwerks e do localStorage do browser,
 para simular um comportamento de persistencia de dados no localStorge quando não houver scorm.
 
+## Utilização
+
+Instalando:
+
+``` sh
+npm i scorm-localstorage-service
+```
+
+Instanciando e usando:
+
+``` js
+const api = PersistanceService.Create(); //cria a instancia
+api.init(); //sempre inicializar primeiro
+
+api.saveData('points', 10);
+let savedPoints = api.loadObject('points');
+
+```
+
 ## API
 
 ### Padrão scorm - pipwerks

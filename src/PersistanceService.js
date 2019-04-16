@@ -1,6 +1,7 @@
-// variaveis reservadas que usamos no suspend_data
-const QUIZES = "quizes";
 class PersistanceService {
+    static Create() {
+        return new PersistanceService(new ScormAPIService(), new LocstorService());
+    }
     constructor(scorm, locstor) {
         this.scorm = scorm;
         this.locstor = locstor;
@@ -35,7 +36,7 @@ class PersistanceService {
     setObject(key, value) {
         return this.persistance.setObject(key, value);
     }
-    
+
     saveObject(key, value) {
         let objects = this.persistance.getObject(SCORM_API.SUSPEND_DATA) || {};
         objects[key] = value;
