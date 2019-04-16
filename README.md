@@ -7,35 +7,35 @@ para simular um comportamento de persistencia de dados no localStorge quando nã
 
 ### Padrão scorm - pipwerks
 
-ScormAPIService.[init](#scorm-api-service-init)();
+ScormAPIService.[init](#scormapiserviceinit)();
 
-ScormAPIService.[get](#scorm-api-service-get)(String key): String;
+ScormAPIService.[get](#scormapiserviceget)(String key): String;
 
-ScormAPIService.[set](#scorm-api-service-set)(String key, String value): Boolean;
+ScormAPIService.[set](#scormapiserviceset)(String key, String value): Boolean;
 
-ScormAPIService.[save](#scorm-api-service-save)();
+ScormAPIService.[save](#scormapiservicesave)();
 
-ScormAPIService.[quit](#scorm-api-service-quit)();
+ScormAPIService.[quit](#scormapiservicequit)();
 
 ### Camada para trabalhar com objetos
 
-ScormAPIService.[getObject](#scorm-api-service-getObject)(String key): Object;
+ScormAPIService.[getObject](#scormapiservicegetObject)(String key): Object;
 
-ScormAPIService.[setObject](#scorm-api-service-setObject)(String key, Object value);
+ScormAPIService.[setObject](#scormapiservicesetObject)(String key, Object value);
 
-ScormAPIService.[loadObject](#scorm-api-service-loadObject)(String key): Object;
+ScormAPIService.[loadObject](#scormapiserviceloadObject)(String key): Object;
 
-ScormAPIService.[saveObject](#scorm-api-service-saveObject)(String key, Object value): Void;
+ScormAPIService.[saveObject](#scormapiservicesaveObject)(String key, Object value): Void;
 
-ScormAPIService.[saveQuiz](#scorm-api-service-saveQuiz)(String key, Object value);
+ScormAPIService.[saveQuiz](#scormapiservicesaveQuiz)(String key, Object value);
 
-ScormAPIService.[loadQuiz](#scorm-api-service-loadQuiz)(String key, Object value);
+ScormAPIService.[loadQuiz](#scormapiserviceloadQuiz)(String key, Object value);
 
-ScormAPIService.[getQuizCollection](#scorm-api-service-getQuizCollection)():Object;
+ScormAPIService.[getQuizCollection](#scormapiservicegetQuizCollection)():Object;
 
-ScormAPIService.[setLessonStatus](#scorm-api-service-setCompleted)(String status):Void;
+ScormAPIService.[setLessonStatus](#scormapiservicesetCompleted)(String status):Void;
 
-ScormAPIService.[setCompleted](#scorm-api-service-setCompleted)():Void;
+ScormAPIService.[setCompleted](#scormapiservicesetCompleted)():Void;
 
 ### ScormAPIService.init
 
