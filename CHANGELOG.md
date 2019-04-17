@@ -24,3 +24,9 @@ Ajuste de manifesto do npm para publicação.
 ### Changed
 
 - Separação de constantes em arquivo 'conts.js'
+
+## [1.1.1] - 17-04-2019
+
+### Changed
+
+- Ajuste de erro no PersistanceFake

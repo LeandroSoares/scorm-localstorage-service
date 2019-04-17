@@ -1,33 +1,33 @@
 {
-    "name": "scorm-localstorage-service",
-    "version": "1.1.0",
-    "description": "A biblioteca disponibiliza um encapsulamento da biblioteca pipwerks e do localStorage do browser,\r para simular um comportamento de persistencia de dados no localStorge quando não houver scorm.",
-    "main": "dist/scorm-localstorage-service.min.js",
-    "directories": {
-        "example": "example"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "@babel/core": "^7.1.2",
-        "@babel/plugin-transform-object-assign": "^7.0.0",
-        "@babel/preset-env": "^7.1.0",
-        "gulp": "^4.0.0",
-        "gulp-babel": "^8.0.0-beta.2",
-        "gulp-concat": "^2.6.1",
-        "gulp-sourcemaps": "^2.6.4",
-        "gulp-uglify": "^3.0.1"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/LeandroSoares/scorm-localstorage-service.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/LeandroSoares/scorm-localstorage-service/issues"
-    },
-    "homepage": "https://github.com/LeandroSoares/scorm-localstorage-service#readme"
+	"name": "scorm-localstorage-service",
+	"version": "1.1.1",
+	"description": "A biblioteca disponibiliza um encapsulamento da biblioteca pipwerks e do localStorage do browser,\r para simular um comportamento de persistencia de dados no localStorge quando não houver scorm.",
+	"main": "dist/scorm-localstorage-service.min.js",
+	"directories": {
+		"example": "example"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/core": "^7.1.2",
+		"@babel/plugin-transform-object-assign": "^7.0.0",
+		"@babel/preset-env": "^7.1.0",
+		"gulp": "^4.0.0",
+		"gulp-babel": "^8.0.0-beta.2",
+		"gulp-concat": "^2.6.1",
+		"gulp-sourcemaps": "^2.6.4",
+		"gulp-uglify": "^3.0.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/LeandroSoares/scorm-localstorage-service.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/LeandroSoares/scorm-localstorage-service/issues"
+	},
+	"homepage": "https://github.com/LeandroSoares/scorm-localstorage-service#readme"
 }

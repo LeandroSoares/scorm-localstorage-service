@@ -48,75 +48,75 @@ class LocstorService {
     }
 }
 class PersistanceFake {
-    constructor() {
-        this.name = "PersistanceFake";
-        this.db = {};
-        console.log(`%c* Persistance - ${this.persistance.name} * `, "font-weight:bold; color:purple");
-    }
+	constructor() {
+		this.name = "PersistanceFake";
+		this.db = {};
+		console.log(`%c* Persistance - PersistanceFake * `, "font-weight:bold; color:purple");
+	}
 
-    init() {
-        return true;
-    }
+	init() {
+		return true;
+	}
 
-    get(key) {
-        return this.db[key];
-    }
+	get(key) {
+		return this.db[key];
+	}
 
-    set(key, value) {
-        this.db[key] = value;
-        console.log("PersistanceFake >>", key, value);
-    }
+	set(key, value) {
+		this.db[key] = value;
+		console.log("PersistanceFake >>", key, value);
+	}
 
-    save() {
-        return true;
-    }
+	save() {
+		return true;
+	}
 
-    quit() {
-        console.log("PersistanceFake >> quit");
-        return true;
-    }
+	quit() {
+		console.log("PersistanceFake >> quit");
+		return true;
+	}
 
-    getObject(key) {
-        return this.get(key);
-    }
+	getObject(key) {
+		return this.get(key);
+	}
 
-    setObject(key, value) {
-        this.set(key, value);
-    }
+	setObject(key, value) {
+		this.set(key, value);
+	}
 
-    saveObject(key, value) {
-        let objects = this.getObject(SCORM_API.SUSPEND_DATA) || {};
-        objects[key] = value;
-        this.setObject(SCORM_API.SUSPEND_DATA, objects);
-    }
+	saveObject(key, value) {
+		let objects = this.getObject(SCORM_API.SUSPEND_DATA) || {};
+		objects[key] = value;
+		this.setObject(SCORM_API.SUSPEND_DATA, objects);
+	}
 
-    loadObject(key) {
-        let objects = this.getObject(SCORM_API.SUSPEND_DATA) || {};
-        return objects[key];
-    }
+	loadObject(key) {
+		let objects = this.getObject(SCORM_API.SUSPEND_DATA) || {};
+		return objects[key];
+	}
 
-    saveQuiz(key, value) {
-        let quizes = this.loadObject(QUIZES) || {};
-        quizes[key] = value;
-        this.saveObject(QUIZES, quizes);
-    }
+	saveQuiz(key, value) {
+		let quizes = this.loadObject(QUIZES) || {};
+		quizes[key] = value;
+		this.saveObject(QUIZES, quizes);
+	}
 
-    loadQuiz(key) {
-        let quizes = this.loadObject(QUIZES) || {};
-        return quizes[key];
-    }
+	loadQuiz(key) {
+		let quizes = this.loadObject(QUIZES) || {};
+		return quizes[key];
+	}
 
-    getQuizCollection() {
-        return this.loadObject(QUIZES);
-    }
+	getQuizCollection() {
+		return this.loadObject(QUIZES);
+	}
 
-    setCompleted() {
-        this.setLessonStatus(STATUS.COMPLETED);
-    }
+	setCompleted() {
+		this.setLessonStatus(STATUS.COMPLETED);
+	}
 
-    setLessonStatus(status) {
-        this.set(SCORM_API.LESSON_STATUS, status);
-    }
+	setLessonStatus(status) {
+		this.set(SCORM_API.LESSON_STATUS, status);
+	}
 }
 class PersistanceService {
     static Create() {
