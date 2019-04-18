@@ -17,7 +17,7 @@ Instanciando e usando:
 const api = PersistanceService.Create(); //cria a instancia
 api.init(); //sempre inicializar primeiro
 
-api.saveData('points', 10);
+api.saveObject('points', 10);
 let savedPoints = api.loadObject('points');
 
 ```
