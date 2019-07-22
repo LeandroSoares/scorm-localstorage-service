@@ -48,10 +48,13 @@ class LocstorService {
     }
 }
 class PersistanceFake {
+	static Create() {
+		return new PersistanceFake();
+	}
 	constructor() {
 		this.name = "PersistanceFake";
 		this.db = {};
-		console.log(`%c* Persistance - PersistanceFake * `, "font-weight:bold; color:purple");
+		console.log(`%c* Persistance - ${this.name} * `, "font-weight:bold; color:purple");
 	}
 
 	init() {
@@ -126,7 +129,7 @@ class PersistanceService {
         this.scorm = scorm;
         this.locstor = locstor;
         this.persistance = this.scorm.ready ? this.scorm : this.locstor;
-        console.log(`%c* Persistance - ${this.persistance.name} * `, "font-weight:bold; color:purple");
+        // console.log(`%c* Persistance - ${this.persistance.name} * `, "font-weight:bold; color:purple");
     }
     // inicializa scorm
     init() {
