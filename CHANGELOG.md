@@ -30,3 +30,15 @@ Ajuste de manifesto do npm para publicação.
 ### Changed
 
 - Ajuste de erro no PersistanceFake
+
+## [1.1.2]
+
+### Changed
+
+- Limpando logs
+
+## [1.1.3]
+
+### Changed
+
+- Update de libs
