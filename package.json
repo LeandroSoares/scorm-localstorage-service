@@ -1,6 +1,6 @@
 {
 	"name": "scorm-localstorage-service",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "A biblioteca disponibiliza um encapsulamento da biblioteca pipwerks e do localStorage do browser,\r para simular um comportamento de persistencia de dados no localStorge quando não houver scorm.",
 	"main": "dist/scorm-localstorage-service.min.js",
 	"directories": {
