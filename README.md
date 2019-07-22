@@ -120,4 +120,8 @@ Faz um `PersistanceService.setLessonStatus(STATUS.COMPLETED);`.
 
 - SCORM_API
 
+<<<<<<< HEAD
   - SUSPEND_DATA, LESSON_STATUS, LESSON_LOCATION, SCORE
+=======
+  - SUSPEND_DATA, LESSON_STATUS, LESSON_LOCATION, SCORE
+>>>>>>> 7622f7512cbdcaaf7d8cebc0ace34dc6c64357cf
