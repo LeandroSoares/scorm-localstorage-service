@@ -72,3 +72,7 @@ class PersistanceService {
 		this.set(SCORM_API.LESSON_STATUS, status);
 	}
 }
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = PersistanceService;
+}

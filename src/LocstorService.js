@@ -30,3 +30,7 @@ class LocstorService {
         console.log('trying to quit...');
     }
 }
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = LocstorService;
+}

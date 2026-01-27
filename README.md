@@ -1,123 +1,135 @@
-# Scorm-LocalStorage Service
+# SCORM LocalStorage Service
 
-A biblioteca disponibiliza um encapsulamento da biblioteca pipwerks e do localStorage do browser,
-para simular um comportamento de persistencia de dados no localStorge quando não houver scorm.
+Biblioteca para **abstração e persistência de dados em conteúdos E-learning** (SCORM). 
 
-## Utilização
+Ela funciona como um *wrapper* inteligente que tenta salvar os dados no **LMS** (via SCORM API); caso falhe ou esteja rodando localmente (fora de um LMS), faz fallback automático para o **LocalStorage** do navegador. Isso permite desenvolver e testar conteúdos localmente sem alterar o código de persistência.
 
-Instalando:
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![SCORM](https://img.shields.io/badge/SCORM-1.2%20%2F%202004-blue)
 
-``` sh
-npm i scorm-localstorage-service
+---
+
+## 🚀 Instalação
+
+```bash
+npm install scorm-localstorage-service
 ```
 
-Instanciando e usando:
+### Pré-requisitos
 
-``` js
-const api = PersistanceService.Create(); //cria a instancia
-api.init(); //sempre inicializar primeiro
+Esta biblioteca depende do **Pipwerks SCORM API Wrapper** para comunicação com versões SCORM 1.2 e 2004. Certifique-se de carregar o script do pipwerks **antes** desta biblioteca em seu HTML.
 
-api.saveObject('points', 10);
-let savedPoints = api.loadObject('points');
+```html
+<!-- 1. Carregar Pipwerks -->
+<script src="path/to/SCORM_API_wrapper.js"></script>
 
+<!-- 2. Carregar esta biblioteca -->
+<script src="node_modules/scorm-localstorage-service/dist/scorm-localstorage-service.min.js"></script>
 ```
 
-## API
+---
 
-### Padrão scorm - pipwerks
+## 🛠️ Como Usar
 
-PersistanceService.[init](#persistanceserviceinit)();
+### Inicialização
 
-PersistanceService.[get](#persistanceserviceget)(String key): String;
+Sempre inicialize o serviço antes de usar. Ele detectará automaticamente se deve usar SCORM ou LocalStorage.
 
-PersistanceService.[set](#persistanceserviceset)(String key, String value): Boolean;
+```javascript
+// Cria a instância (Factory Pattern)
+const api = PersistanceService.Create();
 
-PersistanceService.[save](#persistanceservicesave)();
+// Inicializa (retorna true se sucesso)
+const initialized = api.init();
 
-PersistanceService.[quit](#persistanceservicequit)();
+if (initialized) {
+    console.log("Serviço de persistência pronto!");
+} else {
+    console.error("Falha ao inicializar persistência.");
+}
+```
 
-### Camada para trabalhar com objetos
+### Salvando e Carregando Dados
 
-PersistanceService.[getObject](#persistanceservicegetObject)(String key): Object;
+A biblioteca lida automaticamente com a serialização JSON para objetos complexos.
 
-PersistanceService.[setObject](#persistanceservicesetObject)(String key, Object value);
+```javascript
+// Salvar um valor simples (String)
+api.set("cmi.suspend_data", "dado_bruto");
 
-PersistanceService.[loadObject](#persistanceserviceloadObject)(String key): Object;
+// Salvar um Objeto (Serialização automática para JSON dentro do suspend_data)
+api.saveObject("pontuacao_bonus", 500);
+api.saveObject("progresso_fases", { fase1: true, fase2: false });
 
-PersistanceService.[saveObject](#persistanceservicesaveObject)(String key, Object value): Void;
+// Carregar um Objeto
+const fases = api.loadObject("progresso_fases");
+console.log(fases.fase1); // true
 
-PersistanceService.[saveQuiz](#persistanceservicesaveQuiz)(String key, Object value);
+// Salvar status da lição
+api.setCompleted(); // Marca como 'completed'
+```
 
-PersistanceService.[loadQuiz](#persistanceserviceloadQuiz)(String key, Object value);
+---
 
-PersistanceService.[getQuizCollection](#persistanceservicegetQuizCollection)():Object;
+## 📚 Referência da API
 
-PersistanceService.[setLessonStatus](#persistanceservicesetCompleted)(String status):Void;
+### `PersistanceService`
 
-PersistanceService.[setCompleted](#persistanceservicesetCompleted)():Void;
+| Método | Retorno | Descrição |
+|--------|---------|-----------|
+| `Create()` | `PersistanceService` | Método estático. Retorna a instância configurada. |
+| `init()` | `Boolean` | Inicializa a conexão (LMS ou LocalStorage). |
+| `save()` | `Boolean` | Força o commit dos dados (LMSCommit/Save). |
+| `quit()` | `void` | Encerra a conexão. |
 
-### PersistanceService.init
+### Manipulação de Dados (Tipados)
 
-Tenta inicializar a api scorm, caso não consiga inicia o serviço de localStorage.
+| Método | Descrição |
+|--------|-----------|
+| `saveObject(key, value)` | Salva um valor (objeto/string/int) dentro do `cmi.suspend_data` convertendo para JSON. |
+| `loadObject(key)` | Recupera um valor do `cmi.suspend_data` convertendo de JSON para OBJ. |
+| `saveQuiz(key, value)` | Atalho para salvar dados de quiz dentro de um objeto 'quizes'. |
+| `loadQuiz(key)` | Recupera dados de quiz. |
+| `getQuizCollection()` | Retorna todos os quizes salvos. |
 
-### PersistanceService.get
+### Métodos Nativos (SCORM Puro)
 
-Faz um get puro da api pipwerks, ou localStorage;
+| Método | Descrição |
+|--------|-----------|
+| `get(key)` | Faz o `LMSGetValue` direto. Ex: `api.get('cmi.core.student_name')`. |
+| `set(key, value)` | Faz o `LMSSetValue` direto. |
 
-### PersistanceService.set
+### Helpers de Status
 
-Faz um set puro da api pipwerks, ou localStorage;
+| Método | Descrição |
+|--------|-----------|
+| `setCompleted()` | Define `cmi.core.lesson_status` como `completed`. |
+| `setLessonStatus(status)` | Define um status personalizado (Ex: `passed`, `failed`). |
 
-### PersistanceService.save
+---
 
-Faz um save puro da api pipwerks;
+## 💻 Desenvolvimento
 
-### PersistanceService.quit
+### Instalar dependências
+```bash
+npm install
+```
 
-Faz um quit puro da api pipwerks;
+### Rodar Build (Gulp)
+Gera os arquivos minificados na pasta `dist/`.
+```bash
+npm run build
+```
 
-### PersistanceService.getObject
+### Rodar Testes
+Executa a suíte de testes unitários com Jest.
+```bash
+npm test
+```
 
-Faz um `PersistanceService.get(key)` mas retorna o o value com *JSON.parse*.
+---
 
-### PersistanceService.setObject
+## 📄 Licença
 
-Faz um `PersistanceService.set(key, value)` mas transforma o value em json com o *JSON.stringify*.
-
-### PersistanceService.loadObject
-
-Faz um `PersistanceService.getObject('cmi.suspend_data')[key]`, retornando com *JSON.parse*.
-
-### PersistanceService.saveObject
-
-Faz um `PersistanceService.setObject('cmi.suspend_data')[key]` = value, transforma o value em json com o *JSON.stringify* antes de salvar.
-
-### PersistanceService.loadQuiz
-
-Faz um `PersistanceService.saveObject('cmi.suspend_data')['quizes'][key]`, retornando com *JSON.parse*.
-
-### PersistanceService.saveQuiz
-
-Faz um `PersistanceService.saveObject('cmi.suspend_data')['quizes'][key]` = value, transforma o value em json com o *JSON.stringify* antes de salvar.
-
-### PersistanceService.getQuizCollection
-
-Faz um `PersistanceService.saveObject('cmi.suspend_data')['quizes']`, retornando com *JSON.parse*.
-
-### PersistanceService.setLessonStatus
-
-Faz um `PersistanceService.set(SCORM_API.LESSON_STATUS, status);`.
-
-### PersistanceService.setCompleted
-
-Faz um `PersistanceService.setLessonStatus(STATUS.COMPLETED);`.
-
-#### Constantes de apoio
-
-- STATUS
-
-  - PASSED, COMPLETED, FAILED, INCOMPLETE, BROWSED, NOT_ATTEMPTED
-
-- SCORM_API
-
-- SUSPEND_DATA, LESSON_STATUS, LESSON_LOCATION, SCORE
+ISC

@@ -35,7 +35,7 @@ class ScormAPIService {
     setObject(key, value) {
         return this.set(key, JSON.stringify(value));
     }
-    
+
     save() {
         return this.scorm.save();
     }
@@ -43,4 +43,8 @@ class ScormAPIService {
     quit() {
         this.scorm.quit();
     }
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ScormAPIService;
 }
