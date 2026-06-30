@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class PersistanceFake {
 	static Create() {
 		return new PersistanceFake();

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const QUIZES = "quizes";
 const STATUS = {
     PASSED: "passed",

@@ -10,6 +10,16 @@
 		"ecmaVersion": 12,
 		"sourceType": "script"
 	},
+	"globals": {
+		"SCORM_API": "readonly",
+		"QUIZES": "readonly",
+		"STATUS": "readonly",
+		"pipwerks": "readonly",
+		"PersistanceFake": "readonly",
+		"PersistanceService": "readonly",
+		"ScormAPIService": "readonly",
+		"LocstorService": "readonly"
+	},
 	"ignorePatterns": [
 		"dist/",
 		"node_modules/",

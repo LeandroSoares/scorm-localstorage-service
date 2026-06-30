@@ -72,7 +72,18 @@ api.setCompleted(); // Marca como 'completed'
 
 ---
 
-## 📚 Referência da API
+## 🏗️ Arquitetura e Mock Local
+
+Esta biblioteca foi desenhada pensando na experiência de desenvolvimento local, sem a necessidade de um servidor LMS (Learning Management System) rodando o tempo todo.
+
+### 1. Ambiente LMS (Injeção de API SCORM)
+Em um ambiente de produção (LMS), o servidor (ex: PHP, Java, etc.) injeta nativamente uma API SCORM no navegador (geralmente como `window.API` ou `window.API_1484_11`). O **pipwerks** funciona como um wrapper que caça e se conecta a essa API invisível do LMS. Quando a conexão é bem-sucedida, nossa biblioteca utiliza o `ScormAPIService` para salvar e recuperar dados reais do LMS. A constante interna `SCORM_API` serve apenas para mapear os nomes das variáveis padrão (como `cmi.suspend_data`).
+
+### 2. Ambiente Local (`PersistanceFake`)
+Quando o conteúdo é aberto localmente (ex: abrindo um `index.html` direto no navegador ou via Live Server) ou quando o LMS falha em injetar a API, o pipwerks não encontra a API do SCORM. Nesse momento, a biblioteca faz um **fallback automático**.
+Para testes customizados, você também pode instanciar explicitamente o `PersistanceFake`. Ele simula a persistência de dados em memória e joga logs coloridos no console (`PersistanceFake >> key value`) a cada interação. Isso permite que você desenvolva, teste a lógica de pontuação, progressão de telas e quizes sem depender de um servidor externo, acelerando o desenvolvimento do frontend SCORM.
+
+---
 
 ### `PersistanceService`
 
