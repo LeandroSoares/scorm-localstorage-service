@@ -8,16 +8,17 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.28.6",
+		"@babel/plugin-transform-block-scoping": "^7.28.6",
+		"@babel/plugin-transform-classes": "^7.28.6",
 		"@babel/plugin-transform-object-assign": "^7.27.1",
-		"@babel/preset-env": "^7.28.6",
-		"babel-jest": "^30.2.0",
+		"babel-jest": "^30.4.1",
 		"gulp": "^5.0.1",
 		"gulp-babel": "^8.0.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-uglify": "^3.0.2",
-		"jest": "^30.2.0",
-		"jest-environment-jsdom": "^30.2.0"
+		"jest": "^30.4.2",
+		"jest-environment-jsdom": "^30.4.1"
 	},
 	"scripts": {
 		"test": "jest"
@@ -33,6 +34,18 @@
 	},
 	"homepage": "https://github.com/LeandroSoares/scorm-localstorage-service#readme",
 	"overrides": {
-		"postcss": "^8.4.38"
+		"postcss": "^8.4.38",
+		"anymatch": {
+			"picomatch": "2.3.2"
+		},
+		"test-exclude": {
+			"minimatch": "3.1.3"
+		},
+		"micromatch": {
+			"picomatch": "2.3.2"
+		},
+		"jest-util": {
+			"picomatch": "4.0.4"
+		}
 	}
 }

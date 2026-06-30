@@ -5,10 +5,9 @@ const uglify = require('gulp-uglify');
 const sourcemaps = require("gulp-sourcemaps");
 
 const babelconfig = {
-    "presets": [
-        "@babel/env"
-    ],
     "plugins": [
+        "@babel/plugin-transform-classes",
+        "@babel/plugin-transform-block-scoping",
         "@babel/plugin-transform-object-assign"
     ]
 };
