@@ -7,7 +7,7 @@
 		"example": "example"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.28.6",
+		"@babel/core": "^7.29.6",
 		"@babel/plugin-transform-object-assign": "^7.27.1",
 		"@babel/preset-env": "^7.28.6",
 		"babel-jest": "^30.2.0",
