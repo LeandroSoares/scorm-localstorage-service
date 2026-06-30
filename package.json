@@ -27,8 +27,8 @@
     "type": "git",
     "url": "git+https://github.com/LeandroSoares/scorm-localstorage-service.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Leandro Soares",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/LeandroSoares/scorm-localstorage-service/issues"
   },

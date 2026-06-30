@@ -143,4 +143,4 @@ npm test
 
 ## 📄 Licença
 
-ISC
+MIT License - Veja o arquivo [LICENSE](LICENSE) para mais detalhes. (Essencialmente: você pode usar livremente, desde que mantenha os créditos/direitos autorais da implementação original).
