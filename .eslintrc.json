@@ -1,0 +1,18 @@
+{
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2021": true,
+		"jest": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "script"
+	},
+	"ignorePatterns": [
+		"dist/",
+		"node_modules/",
+		"example/SCORM_API_wrapper.js"
+	]
+}
